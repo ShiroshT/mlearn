@@ -92,19 +92,13 @@ alpha = 0.01
 
 theta, J_history = gradient_descent(it, y, theta, alpha, iterations)
 
+print 'value of theta', theta
 
-
-#print theta
-###Predict values for population sizes of 35,000 and 70,000
-#predict1 = array([1, 3.5]).dot(theta).flatten()
-#print 'For population = 35,000, we predict a profit of %f' % (predict1 * 10000)
-#predict2 = array([1, 7.0]).dot(theta).flatten()
-#print 'For population = 70,000, we predict a profit of %f' % (predict2 * 10000)
  
 ##Plot the results
-#result = it.dot(theta).flatten()
-#pl.scatter (dataset[:,0], result, color = "red")
-#pl.show()
+result = it.dot(theta).flatten()
+pl.scatter (dataset[:,0], result, color = "red")
+pl.show()
  
  
 #Grid over which we will calculate J

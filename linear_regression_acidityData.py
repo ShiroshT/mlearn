@@ -31,9 +31,12 @@ def gradient_descent(x, y, theta, alpha, iterations):
     return theta, J_history
 
 ''' **************************************************
-begin main code 
-******************************************************
-'''
+the dataset contains the following features.
+"fixed acidity";"volatile acidity";"citric acid";
+"residual sugar";"chlorides";"free sulfur dioxide";
+"total sulfur dioxide";"density";"pH";
+"sulphates";"alcohol";"quality"
+****************************************************'''
 dataset = [ ] 
 #read dataset found here: http://archive.ics.uci.edu/ml/datasets/Wine+Quality
 with open ('dataset.csv', 'rb') as csvfile:
@@ -43,13 +46,7 @@ with open ('dataset.csv', 'rb') as csvfile:
         dataset.append(row)
 dataset = np.array(dataset)
 
-'''
-the dataset contains the following features. For the purpose of this we will choose fixed acidity and density
-"fixed acidity";"volatile acidity";"citric acid";
-"residual sugar";"chlorides";"free sulfur dioxide";
-"total sulfur dioxide";"density";"pH";
-"sulphates";"alcohol";"quality"
-'''
+
 #assign data to varaibles x and y
 x = dataset[:,8]
 y = dataset[:,0]

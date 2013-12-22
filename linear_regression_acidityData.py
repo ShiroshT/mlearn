@@ -43,7 +43,6 @@ with open ('dataset.csv', 'rb') as csvfile:
         dataset.append(row)
 dataset = np.array(dataset)
 
-
 '''
 the dataset contains the following features. For the purpose of this we will choose fixed acidity and density
 "fixed acidity";"volatile acidity";"citric acid";
@@ -56,37 +55,31 @@ x = dataset[:,8]
 y = dataset[:,0]
 
 ##plot data set uploaded to for viewing
-
-#pl.scatter(x, y)
-#pl.axis('tight')
-#pl.show()
+pl.scatter(x, y)
+pl.axis('tight')
+pl.show()
 
 #declare varaibles
 #number of observations 
-
 m = y.size
+
 # add a column to the x:
 # this creates a (n x 2) matrix
 it = ones(shape = (m, 2))
 it[:,1] = x
 
-#declare theta
-#this creates a (2 x 1) matrix
-# when multiplied with it above to give a (n x 1) matrix 
-# (n x 2) (2 x1) = (n x 1)
-
+#declare theta: this creates a (2 x 1) matrix
+# when multiplied with it above to give a (n x 1) matrix: (n x 2) (2 x1) = (n x 1)
 theta = zeros(shape = (2,1))
 
 #some gradient descent settings
 # these numbers are trial and error to some extent.
 # larger alpha values crashes gradient decent
-
 iterations = 10000
 alpha = 0.01
 
 # call def gradient descent
 # values theta and J_history is returned
-
 theta, J_history = gradient_descent(it, y, theta, alpha, iterations)
 print 'value of theta', theta
  

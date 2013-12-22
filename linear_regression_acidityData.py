@@ -46,22 +46,19 @@ with open ('dataset.csv', 'rb') as csvfile:
         dataset.append(row)
 dataset = np.array(dataset)
 
-
 #assign data to varaibles x and y
 x = dataset[:,8]
 y = dataset[:,0]
 
-##plot data set uploaded to for viewing
+#plot data set uploaded to for viewing
 pl.scatter(x, y)
 pl.axis('tight')
 pl.show()
 
-#declare varaibles
 #number of observations 
 m = y.size
 
-# add a column to the x:
-# this creates a (n x 2) matrix
+# add a column to the x: this creates a (n x 2) matrix
 it = ones(shape = (m, 2))
 it[:,1] = x
 

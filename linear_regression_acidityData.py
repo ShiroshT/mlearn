@@ -1,5 +1,7 @@
 ''' *********************************************************
 This code is to analyse linear Regression and Gradient Decent
+Original author https://gist.github.com/marcelcaraciolo/1321575 
+Modified by https://github.com/ickyatcity
 ***********************************************************'''
 
 import numpy as np 
@@ -9,7 +11,9 @@ import csv
 from pylab import *
 from numpy import *
 
+
 def compute_cost(x, y, theta):
+
 #number of training examples
 	m = y.size
 
@@ -21,7 +25,10 @@ def compute_cost(x, y, theta):
 
 	return J
 
+
+
 def gradient_descent(x, y, theta, alpha, iterations):
+
 ## numer of training samples
     m = y.size
     J_history = zeros(shape = (iterations, 1))
@@ -33,6 +40,7 @@ def gradient_descent(x, y, theta, alpha, iterations):
 	theta[0][0] = theta[0][0] - (alpha*(1.0 / m) * error_x0.sum())
 	theta[1][0] = theta[1][0] - alpha*(1.0 / m) * error_x1.sum()
     	J_history[i, 0] = compute_cost(x, y, theta)
+
     return theta, J_history
 
 
@@ -63,35 +71,43 @@ the dataset contains the following features. For the purpose of this we will cho
 x = dataset[:,8]
 y = dataset[:,0]
 
-####a = y[:,np.newaxis]
-
-
-##plot data set
+##plot data set uploaded to for viewing
 #pl.scatter(x, y)
 #pl.axis('tight')
 #pl.show()
 
 
 #declare varaibles
+
 #number of observations 
 m = y.size
 
-
 # add a column to the x:
+# this creates a (n x 2) matrix
+
 it = ones(shape = (m, 2))
 it[:,1] = x
  
 
 #declare theta
+#this creates a (2 x 1) matrix
+# when multiplied with it above to give a (n x 1) matrix 
+# (n x 2) (2 x1) = (n x 1)
+
 theta = zeros(shape = (2,1))
 
 
 #some gradient descent settings
+# these numbers are trial and error to some extent.
+# larger alpha values crashes gradient decent
+
 iterations = 10000
 alpha = 0.01
 
-theta, J_history = gradient_descent(it, y, theta, alpha, iterations)
+# call def gradient descent
+# values theta and J_history is returned
 
+theta, J_history = gradient_descent(it, y, theta, alpha, iterations)
 print 'value of theta', theta
 
  
